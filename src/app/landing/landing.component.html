@@ -1,25 +1,31 @@
-<div class="min-h-screen flex flex-col font-sans text-gray-300 bg-black">
+<div class="min-h-screen flex flex-col font-sans text-gray-300 bg-black overflow-x-hidden selection:bg-supabase-green selection:text-black">
   <!-- Navbar -->
-  <nav class="border-b border-gray-800 bg-black/50 backdrop-blur-sm sticky top-0 z-50">
+  <nav class="border-b border-gray-800/60 bg-black/50 backdrop-blur-xl sticky top-0 z-50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex items-center justify-between h-16">
         <div class="flex items-center">
-          <div class="flex-shrink-0 text-white font-bold text-xl tracking-tight">
-            <span class="text-supabase-green">Data</span>Base<span class="text-gray-500">.io</span>
+          <div class="flex-shrink-0 text-white font-bold text-xl tracking-tighter flex items-center gap-2 cursor-pointer">
+            <div class="w-8 h-8 bg-gradient-to-br from-supabase-green to-emerald-600 rounded-lg flex items-center justify-center text-black shadow-lg shadow-supabase-green/20">
+               <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+            </div>
+            <span>DataBase<span class="text-gray-500 font-normal">.io</span></span>
           </div>
           <div class="hidden md:block">
-            <div class="ml-10 flex items-baseline space-x-6">
-              <a href="#" class="text-sm font-medium text-gray-400 hover:text-white transition-colors">Product</a>
-              <a href="#" class="text-sm font-medium text-gray-400 hover:text-white transition-colors">Developers</a>
-              <a href="#" class="text-sm font-medium text-gray-400 hover:text-white transition-colors">Pricing</a>
-              <a href="#" class="text-sm font-medium text-gray-400 hover:text-white transition-colors">Docs</a>
+            <div class="ml-10 flex items-baseline space-x-8">
+              <a href="#" class="text-sm font-medium text-gray-400 hover:text-white transition-colors duration-200">Product</a>
+              <a href="#" class="text-sm font-medium text-gray-400 hover:text-white transition-colors duration-200">Developers</a>
+              <a href="#" class="text-sm font-medium text-gray-400 hover:text-white transition-colors duration-200">Pricing</a>
+              <a href="#" class="text-sm font-medium text-gray-400 hover:text-white transition-colors duration-200">Docs</a>
             </div>
           </div>
         </div>
         <div class="hidden md:block">
           <div class="ml-4 flex items-center md:ml-6 space-x-4">
-             <a href="#" class="text-sm font-medium text-gray-400 hover:text-white transition-colors">Sign in</a>
-             <a href="#" class="bg-supabase-green hover:bg-emerald-400 text-black px-4 py-2 rounded text-sm font-medium transition-colors">Start your project</a>
+             <a href="#" class="text-sm font-medium text-gray-400 hover:text-white transition-colors duration-200">Sign in</a>
+             <a href="#" class="group relative bg-supabase-green text-black px-4 py-2 rounded-md text-sm font-bold transition-all hover:brightness-110 shadow-[0_0_20px_rgba(62,207,142,0.15)] hover:shadow-[0_0_30px_rgba(62,207,142,0.25)] overflow-hidden">
+                <span class="relative z-10">Start your project</span>
+                <div class="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out"></div>
+             </a>
           </div>
         </div>
       </div>
@@ -28,140 +34,177 @@
 
   <!-- Hero Section -->
   <main class="flex-grow relative">
+    <!-- Subtle Background Gradient Spotlight -->
+    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[800px] bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-supabase-green/10 via-black to-black pointer-events-none opacity-40"></div>
 
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-16 text-center lg:pt-32 relative z-10">
-      <h1 class="text-5xl md:text-6xl font-bold text-white tracking-tight mb-6">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-20 text-center lg:pt-36 relative z-10 animate-fade-in-up">
+      <div class="inline-flex items-center space-x-2 bg-gray-900/50 border border-gray-800 rounded-full px-3 py-1 mb-8 backdrop-blur-sm hover:border-gray-700 transition-colors cursor-default">
+         <span class="flex h-2 w-2 relative">
+            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-supabase-green opacity-75"></span>
+            <span class="relative inline-flex rounded-full h-2 w-2 bg-supabase-green"></span>
+         </span>
+         <span class="text-xs font-medium text-gray-300 tracking-wide">v2.0 is now live</span>
+      </div>
+
+      <h1 class="text-6xl md:text-7xl font-extrabold text-white tracking-tight mb-8 leading-tight">
         Build your backend <br class="hidden md:block" />
-        <span class="text-gray-400">in a weekend.</span>
+        <span class="text-transparent bg-clip-text bg-gradient-to-br from-gray-200 to-gray-500">in a weekend.</span>
       </h1>
-      <p class="mt-4 max-w-2xl mx-auto text-lg text-gray-400 mb-10 leading-relaxed">
+      <p class="mt-6 max-w-2xl mx-auto text-xl text-gray-400 mb-10 leading-relaxed font-light">
         Scale your database with our drag-and-drop interface.
         No more complex SQL scripts. Just intuitive design and powerful performance.
       </p>
       <div class="flex justify-center gap-4">
-        <button class="bg-supabase-green text-black px-6 py-3 rounded font-semibold text-base hover:bg-emerald-400 transition-colors">
+        <button class="bg-supabase-green text-black px-8 py-4 rounded-lg font-bold text-base hover:bg-emerald-400 transition-all hover:-translate-y-0.5 shadow-[0_4px_20px_rgba(62,207,142,0.25)]">
           Start Project
         </button>
-        <button class="bg-gray-800 text-white px-6 py-3 rounded font-semibold text-base hover:bg-gray-700 transition-colors border border-gray-700">
+        <button class="bg-gray-900/50 text-white px-8 py-4 rounded-lg font-bold text-base hover:bg-gray-800 transition-all border border-gray-800 hover:border-gray-600 backdrop-blur-sm">
           View Documentation
         </button>
       </div>
 
       <!-- Visual Representation (Interactive Mockup) -->
-      <div class="mt-20 relative rounded border border-gray-800 bg-[#121212] shadow-xl overflow-hidden cursor-default select-none">
-          <div class="p-3 border-b border-gray-800 flex items-center space-x-2 bg-[#1a1a1a]">
-              <div class="w-3 h-3 rounded-full bg-gray-600"></div>
-              <div class="w-3 h-3 rounded-full bg-gray-600"></div>
-              <div class="w-3 h-3 rounded-full bg-gray-600"></div>
-              <div class="ml-4 text-xs text-gray-500 font-mono">Mi Base de Datos</div>
-          </div>
-          <div class="p-0 grid grid-cols-12 gap-0 text-left h-[500px] overflow-hidden relative bg-[#0F0F0F]">
-                <!-- Sidebar -->
-                <div class="col-span-2 border-r border-gray-800 pr-4 space-y-3 pt-6 pl-6">
-                  <div class="h-2 w-16 bg-gray-800 rounded"></div>
-                  <div class="h-2 w-24 bg-gray-800/50 rounded"></div>
-                  <div class="h-2 w-20 bg-gray-800/50 rounded"></div>
-                  <div class="h-2 w-12 bg-gray-800/50 rounded"></div>
+      <div class="mt-24 relative rounded-xl border border-gray-800/60 bg-[#121212] shadow-2xl shadow-black/50 overflow-hidden cursor-default select-none group ring-1 ring-white/5">
+          <!-- Mockup Toolbar -->
+          <div class="h-12 border-b border-gray-800 flex items-center justify-between bg-[#161616] px-4">
+              <div class="flex items-center space-x-4">
+                 <div class="flex items-center space-x-1.5">
+                    <div class="w-3 h-3 rounded-full bg-[#FF5F57] shadow-sm"></div>
+                    <div class="w-3 h-3 rounded-full bg-[#FEBC2E] shadow-sm"></div>
+                    <div class="w-3 h-3 rounded-full bg-[#28C840] shadow-sm"></div>
+                 </div>
+                 <div class="h-4 w-[1px] bg-gray-700 mx-2"></div>
+                 <span class="text-xs text-gray-400 font-medium font-mono flex items-center gap-2">
+                    <svg class="w-3 h-3 text-supabase-green" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4"/></svg>
+                    Mi Base de Datos
+                 </span>
+              </div>
 
-                  <div class="mt-8 h-2 w-16 bg-gray-800 rounded"></div>
-                  <div class="h-2 w-24 bg-gray-800/50 rounded"></div>
-                  <div class="h-2 w-20 bg-gray-800/50 rounded"></div>
-                </div>
-                <!-- Canvas -->
-                <div class="col-span-10 relative bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMSIgY3k9IjEiIHI9IjEiIGZpbGw9IiMzMzMiLz48L3N2Zz4=')]">
-
-                  <!-- Table Node 1: Users -->
-                  <div cdkDrag (cdkDragMoved)="onDragMoved($event, 0)"
-                       class="absolute w-56 bg-[#1a1a1a] rounded border border-gray-700 shadow-lg cursor-move hover:border-gray-500 transition-colors z-20"
-                       [style.transform]="'translate3d(' + nodes[0].x + 'px, ' + nodes[0].y + 'px, 0)'">
-
-                      <!-- Drag Handle -->
-                      <div class="flex justify-between items-center px-3 py-2 border-b border-gray-700 bg-[#222] rounded-t" cdkDragHandle>
-                          <span class="font-semibold text-gray-200 text-xs">{{ nodes[0].name }}</span>
-                          <svg class="w-3 h-3 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"/></svg>
-                      </div>
-
-                      <div class="p-2 space-y-2">
-                          <div class="flex justify-between items-center text-xs group hover:bg-gray-800/50 p-1 rounded">
-                            <div class="flex items-center space-x-2">
-                              <span class="text-yellow-600 font-mono">PK</span>
-                              <span class="text-gray-300">id</span>
-                            </div>
-                            <span class="text-gray-500 font-mono">uuid</span>
-                          </div>
-                          <div class="flex justify-between items-center text-xs group hover:bg-gray-800/50 p-1 rounded">
-                            <div class="flex items-center space-x-2">
-                              <span class="w-4"></span>
-                              <span class="text-gray-300">email</span>
-                            </div>
-                            <span class="text-gray-500 font-mono">varchar</span>
-                          </div>
-                          <div class="flex justify-between items-center text-xs group hover:bg-gray-800/50 p-1 rounded">
-                            <div class="flex items-center space-x-2">
-                              <span class="w-4"></span>
-                              <span class="text-gray-300">full_name</span>
-                            </div>
-                            <span class="text-gray-500 font-mono">text</span>
-                          </div>
-                           <div class="flex justify-between items-center text-xs group hover:bg-gray-800/50 p-1 rounded">
-                            <div class="flex items-center space-x-2">
-                              <span class="w-4"></span>
-                              <span class="text-gray-300">created_at</span>
-                            </div>
-                            <span class="text-gray-500 font-mono">timestamptz</span>
-                          </div>
-                      </div>
+              <!-- Fake Toolbar Actions -->
+              <div class="flex items-center space-x-3">
+                  <div class="flex bg-black/30 rounded border border-gray-800 p-1">
+                      <div class="p-1 hover:bg-gray-700 rounded transition-colors cursor-pointer"><svg class="w-3 h-3 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"/></svg></div>
+                      <div class="p-1 hover:bg-gray-700 rounded transition-colors cursor-pointer"><svg class="w-3 h-3 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg></div>
                   </div>
+                  <div class="text-[10px] text-supabase-green font-bold uppercase tracking-wider bg-supabase-green/10 px-2 py-1 rounded border border-supabase-green/20 animate-pulse">
+                      Interactive
+                  </div>
+              </div>
+          </div>
 
-                  <!-- Table Node 2: Posts -->
-                  <div cdkDrag (cdkDragMoved)="onDragMoved($event, 1)"
-                       class="absolute w-56 bg-[#1a1a1a] rounded border border-gray-700 shadow-lg cursor-move hover:border-gray-500 transition-colors z-20"
-                       [style.transform]="'translate3d(' + nodes[1].x + 'px, ' + nodes[1].y + 'px, 0)'">
+          <div class="p-0 grid grid-cols-12 gap-0 text-left h-[550px] overflow-hidden relative bg-[#0B0B0B]">
+                <!-- Sidebar -->
+                <div class="col-span-2 border-r border-gray-800/50 pr-4 space-y-4 pt-6 pl-6 hidden md:block bg-[#111]/50 backdrop-blur-sm">
+                  <div class="flex items-center justify-between mb-6">
+                      <span class="text-[10px] font-bold text-gray-500 uppercase tracking-widest">Tables</span>
+                      <svg class="w-3 h-3 text-gray-500 cursor-pointer hover:text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"/></svg>
+                  </div>
+                  <div class="h-2 w-24 bg-gray-800 rounded-sm"></div>
+                  <div class="h-2 w-32 bg-gray-800/50 rounded-sm"></div>
+                  <div class="h-2 w-28 bg-gray-800/50 rounded-sm"></div>
+                  <div class="h-2 w-20 bg-gray-800/50 rounded-sm"></div>
+
+                  <div class="mt-8 h-2 w-24 bg-gray-800 rounded-sm"></div>
+                  <div class="h-2 w-32 bg-gray-800/50 rounded-sm"></div>
+                  <div class="h-2 w-28 bg-gray-800/50 rounded-sm"></div>
+                </div>
+
+                <!-- Canvas -->
+                <div class="col-span-12 md:col-span-10 relative bg-[radial-gradient(#1f1f1f_1px,transparent_1px)] [background-size:20px_20px]">
+
+                  <!-- Dynamic Nodes -->
+                   <div *ngFor="let node of nodes; let i = index"
+                       cdkDrag (cdkDragMoved)="onDragMoved($event, i)"
+                       class="absolute w-60 bg-[#161616] rounded-lg border border-gray-700 shadow-xl cursor-move hover:border-gray-500 transition-all z-20 hover:shadow-2xl"
+                       [style.left.px]="node.initialX" [style.top.px]="node.initialY">
 
                       <!-- Drag Handle -->
-                      <div class="flex justify-between items-center px-3 py-2 border-b border-gray-700 bg-[#222] rounded-t" cdkDragHandle>
-                          <span class="font-semibold text-gray-200 text-xs">{{ nodes[1].name }}</span>
-                          <svg class="w-3 h-3 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"/></svg>
+                      <div class="flex justify-between items-center px-4 py-3 border-b border-gray-800 bg-[#1A1A1A] rounded-t-lg group-node" cdkDragHandle>
+                          <div class="flex items-center gap-2">
+                              <span class="w-2 h-2 rounded-full bg-gray-500 group-hover:bg-supabase-green transition-colors"></span>
+                              <span class="font-bold text-gray-200 text-xs tracking-wide">{{ node.name }}</span>
+                          </div>
+                          <svg class="w-4 h-4 text-gray-600 hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z"/></svg>
                       </div>
 
-                      <div class="p-2 space-y-2">
-                          <div class="flex justify-between items-center text-xs group hover:bg-gray-800/50 p-1 rounded">
-                            <div class="flex items-center space-x-2">
-                              <span class="text-yellow-600 font-mono">PK</span>
-                              <span class="text-gray-300">id</span>
+                      <div class="p-2">
+                          <div *ngFor="let field of node.fields"
+                               (click)="selectField(node.name, field)"
+                               class="flex justify-between items-center text-xs px-2 py-1.5 rounded hover:bg-gray-800 transition-colors cursor-pointer border border-transparent hover:border-gray-700"
+                               [class.bg-supabase-green-10]="selectedField === field"
+                               [class.border-supabase-green-20]="selectedField === field">
+                            <div class="flex items-center gap-2">
+                              <span *ngIf="field.isPk" class="text-[10px] font-bold text-yellow-500 bg-yellow-500/10 px-1 rounded border border-yellow-500/20">PK</span>
+                              <span *ngIf="field.isFk" class="text-[10px] font-bold text-blue-500 bg-blue-500/10 px-1 rounded border border-blue-500/20">FK</span>
+                              <span *ngIf="!field.isPk && !field.isFk" class="w-6"></span>
+                              <span class="text-gray-300 font-medium">{{ field.name }}</span>
                             </div>
-                            <span class="text-gray-500 font-mono">uuid</span>
-                          </div>
-                          <div class="flex justify-between items-center text-xs group hover:bg-gray-800/50 p-1 rounded">
-                            <div class="flex items-center space-x-2">
-                              <span class="text-blue-500 font-mono">FK</span>
-                              <span class="text-gray-300">user_id</span>
-                            </div>
-                            <span class="text-gray-500 font-mono">uuid</span>
-                          </div>
-                          <div class="flex justify-between items-center text-xs group hover:bg-gray-800/50 p-1 rounded">
-                            <div class="flex items-center space-x-2">
-                              <span class="w-4"></span>
-                              <span class="text-gray-300">title</span>
-                            </div>
-                            <span class="text-gray-500 font-mono">text</span>
-                          </div>
-                           <div class="flex justify-between items-center text-xs group hover:bg-gray-800/50 p-1 rounded">
-                            <div class="flex items-center space-x-2">
-                              <span class="w-4"></span>
-                              <span class="text-gray-300">content</span>
-                            </div>
-                            <span class="text-gray-500 font-mono">text</span>
+                            <span class="text-gray-500 font-mono text-[10px]">{{ field.type }}</span>
                           </div>
                       </div>
                   </div>
 
                   <!-- Connection Line -->
-                  <svg class="absolute inset-0 pointer-events-none w-full h-full z-10">
-                        <path [attr.d]="connectionPath" stroke="#444" stroke-width="2" fill="none" />
-                        <!-- Start Point Dot (Users ID) -->
-                         <!-- Coordinates match the path start, manually adjusting just for visual confirmation if needed, but path handles it -->
+                  <svg class="absolute inset-0 pointer-events-none w-full h-full z-10 filter drop-shadow-md">
+                        <defs>
+                            <linearGradient id="gradient-stroke" x1="0%" y1="0%" x2="100%" y2="0%">
+                                <stop offset="0%" style="stop-color:#666;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#999;stop-opacity:1" />
+                            </linearGradient>
+                        </defs>
+                        <path [attr.d]="connectionPath" stroke="url(#gradient-stroke)" stroke-width="2" fill="none" class="transition-all duration-75" stroke-linecap="round" />
+                        <!-- Connection Dots -->
+                        <circle [attr.cx]="nodes[0].x + nodes[0].width" [attr.cy]="nodes[0].y + 60" r="3" fill="#666" class="shadow-sm" />
+                        <circle [attr.cx]="nodes[1].x" [attr.cy]="nodes[1].y + 98" r="3" fill="#666" class="shadow-sm" />
                   </svg>
+
+                  <!-- Properties Sidebar (Overlay) -->
+                   <div *ngIf="selectedField"
+                        class="absolute top-4 right-4 bottom-4 w-72 bg-[#121212]/95 backdrop-blur-md border border-gray-700/80 shadow-2xl rounded-xl z-30 flex flex-col animate-slide-in overflow-hidden ring-1 ring-white/10">
+                        <div class="p-4 border-b border-gray-800 flex justify-between items-center bg-[#181818]">
+                            <div class="flex items-center gap-2">
+                                <svg class="w-4 h-4 text-supabase-green" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                                <span class="text-xs font-bold text-gray-300 uppercase tracking-wider">Properties</span>
+                            </div>
+                            <button (click)="closeSidebar()" class="text-gray-500 hover:text-white transition-colors bg-gray-800 hover:bg-gray-700 rounded p-1">
+                                <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+                            </button>
+                        </div>
+                        <div class="p-5 space-y-6 overflow-y-auto">
+                            <div class="group">
+                                <label class="block text-[10px] font-semibold text-gray-500 uppercase mb-1.5 tracking-wider group-hover:text-supabase-green transition-colors">Column Name</label>
+                                <div class="text-sm text-white font-mono bg-black/40 p-2.5 rounded border border-gray-800 flex items-center justify-between">
+                                    <span>{{ selectedField.name }}</span>
+                                    <svg class="w-3 h-3 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"/></svg>
+                                </div>
+                            </div>
+                            <div class="group">
+                                <label class="block text-[10px] font-semibold text-gray-500 uppercase mb-1.5 tracking-wider group-hover:text-supabase-green transition-colors">Data Type</label>
+                                <div class="text-sm text-supabase-green font-mono border border-supabase-green/20 bg-supabase-green/5 p-2 rounded inline-block">{{ selectedField.type }}</div>
+                            </div>
+                            <div class="flex gap-2">
+                                <div *ngIf="selectedField.isPk" class="flex-1">
+                                    <label class="block text-[10px] font-semibold text-gray-500 uppercase mb-1.5">Constraint</label>
+                                    <span class="inline-flex items-center w-full justify-center px-2 py-1.5 rounded text-xs font-bold bg-yellow-500/10 text-yellow-500 border border-yellow-500/20 shadow-sm">PK</span>
+                                </div>
+                                <div *ngIf="selectedField.isFk" class="flex-1">
+                                     <label class="block text-[10px] font-semibold text-gray-500 uppercase mb-1.5">Constraint</label>
+                                    <span class="inline-flex items-center w-full justify-center px-2 py-1.5 rounded text-xs font-bold bg-blue-500/10 text-blue-500 border border-blue-500/20 shadow-sm">FK</span>
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block text-[10px] font-semibold text-gray-500 uppercase mb-1.5 tracking-wider">Description</label>
+                                <p class="text-xs text-gray-400 leading-relaxed border-l-2 border-gray-800 pl-3 py-1">{{ selectedField.description }}</p>
+                            </div>
+                             <div class="pt-4 border-t border-gray-800">
+                                <label class="block text-[10px] font-semibold text-gray-600 uppercase mb-1">Parent Table</label>
+                                <div class="text-xs text-gray-400 font-medium flex items-center gap-1">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-gray-600"></span>
+                                    {{ selectedTable }}
+                                </div>
+                            </div>
+                        </div>
+                   </div>
 
                 </div>
           </div>
@@ -169,62 +212,73 @@
     </div>
 
     <!-- Features Section -->
-    <div class="py-24 border-t border-gray-800 bg-[#0A0A0A]">
+    <div class="py-32 border-t border-gray-800 bg-gradient-to-b from-[#0A0A0A] to-black">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="mb-16">
-                <h2 class="text-supabase-green font-medium tracking-wide uppercase text-xs mb-2">Features</h2>
-                <h3 class="text-3xl font-bold tracking-tight text-white sm:text-4xl">
+            <div class="mb-20 text-center">
+                <h2 class="text-supabase-green font-bold tracking-widest uppercase text-xs mb-3">Features</h2>
+                <h3 class="text-3xl md:text-4xl font-extrabold tracking-tight text-white mb-4">
                     Infrastructure for scale.
                 </h3>
-                 <p class="mt-4 max-w-2xl text-lg text-gray-400">
+                 <p class="max-w-2xl mx-auto text-lg text-gray-400 font-light">
                     We handle the complexity so you can focus on building your product.
                 </p>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <!-- Feature 1 -->
-                <div class="group p-6 rounded border border-gray-800 bg-[#111] hover:border-gray-700 transition-colors">
-                    <div class="w-10 h-10 bg-gray-800/50 rounded flex items-center justify-center mb-6 group-hover:bg-gray-800 transition-colors">
-                        <svg class="w-5 h-5 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4"></path></svg>
+                <div class="group p-8 rounded-2xl border border-gray-800 bg-[#111] hover:border-supabase-green/30 hover:bg-[#131313] transition-all duration-300 hover:shadow-2xl hover:shadow-supabase-green/5 relative overflow-hidden">
+                    <div class="absolute top-0 right-0 p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                        <svg class="w-24 h-24 text-supabase-green/5 -mr-10 -mt-10" fill="currentColor" viewBox="0 0 24 24"><path d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4"></path></svg>
                     </div>
-                    <h4 class="text-lg font-semibold text-white mb-2">Postgres Database</h4>
-                    <p class="text-sm text-gray-400 leading-relaxed">Every project is a full Postgres database, the world's most trusted relational database.</p>
+                    <div class="w-12 h-12 bg-gray-800/50 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-supabase-green/10 transition-all duration-300">
+                        <svg class="w-6 h-6 text-gray-300 group-hover:text-supabase-green transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4"></path></svg>
+                    </div>
+                    <h4 class="text-xl font-bold text-white mb-3">Postgres Database</h4>
+                    <p class="text-sm text-gray-400 leading-relaxed font-light">Every project is a full Postgres database, the world's most trusted relational database.</p>
                 </div>
 
                 <!-- Feature 2 -->
-                 <div class="group p-6 rounded border border-gray-800 bg-[#111] hover:border-gray-700 transition-colors">
-                    <div class="w-10 h-10 bg-gray-800/50 rounded flex items-center justify-center mb-6 group-hover:bg-gray-800 transition-colors">
-                         <svg class="w-5 h-5 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
+                 <div class="group p-8 rounded-2xl border border-gray-800 bg-[#111] hover:border-purple-500/30 hover:bg-[#131313] transition-all duration-300 hover:shadow-2xl hover:shadow-purple-500/5 relative overflow-hidden">
+                     <div class="absolute top-0 right-0 p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                         <svg class="w-24 h-24 text-purple-500/5 -mr-10 -mt-10" fill="currentColor" viewBox="0 0 24 24"><path d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
+                     </div>
+                    <div class="w-12 h-12 bg-gray-800/50 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-purple-500/10 transition-all duration-300">
+                         <svg class="w-6 h-6 text-gray-300 group-hover:text-purple-400 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
                     </div>
-                    <h4 class="text-lg font-semibold text-white mb-2">Authentication</h4>
-                    <p class="text-sm text-gray-400 leading-relaxed">Add user sign ups and logins, securing your data with Row Level Security.</p>
+                    <h4 class="text-xl font-bold text-white mb-3">Authentication</h4>
+                    <p class="text-sm text-gray-400 leading-relaxed font-light">Add user sign ups and logins, securing your data with Row Level Security.</p>
                 </div>
 
                 <!-- Feature 3 -->
-                 <div class="group p-6 rounded border border-gray-800 bg-[#111] hover:border-gray-700 transition-colors">
-                    <div class="w-10 h-10 bg-gray-800/50 rounded flex items-center justify-center mb-6 group-hover:bg-gray-800 transition-colors">
-                        <svg class="w-5 h-5 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                 <div class="group p-8 rounded-2xl border border-gray-800 bg-[#111] hover:border-blue-500/30 hover:bg-[#131313] transition-all duration-300 hover:shadow-2xl hover:shadow-blue-500/5 relative overflow-hidden">
+                    <div class="absolute top-0 right-0 p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                        <svg class="w-24 h-24 text-blue-500/5 -mr-10 -mt-10" fill="currentColor" viewBox="0 0 24 24"><path d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
                     </div>
-                    <h4 class="text-lg font-semibold text-white mb-2">Realtime Subscriptions</h4>
-                    <p class="text-sm text-gray-400 leading-relaxed">Listen to database changes via websockets, build collaborative applications instantly.</p>
+                    <div class="w-12 h-12 bg-gray-800/50 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-blue-500/10 transition-all duration-300">
+                        <svg class="w-6 h-6 text-gray-300 group-hover:text-blue-400 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                    </div>
+                    <h4 class="text-xl font-bold text-white mb-3">Realtime Subscriptions</h4>
+                    <p class="text-sm text-gray-400 leading-relaxed font-light">Listen to database changes via websockets, build collaborative applications instantly.</p>
                 </div>
             </div>
         </div>
     </div>
 
     <!-- Footer -->
-    <footer class="border-t border-gray-800 py-12 bg-black">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center text-gray-500 text-sm">
-            <div class="mb-4 md:mb-0">
-                 <div class="flex items-center space-x-2">
-                    <div class="w-4 h-4 bg-gray-800 rounded-full"></div>
-                    <span>&copy; 2024 DataBase.io.</span>
+    <footer class="border-t border-gray-800 py-16 bg-black">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center text-gray-500 text-sm">
+                <div class="mb-4 md:mb-0 flex items-center gap-3">
+                     <div class="w-8 h-8 bg-gray-900 rounded-lg flex items-center justify-center text-gray-400">
+                        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                     </div>
+                     <span>&copy; 2024 DataBase.io. All rights reserved.</span>
                 </div>
-            </div>
-            <div class="flex space-x-8">
-                <a href="#" class="hover:text-white transition-colors">Twitter</a>
-                <a href="#" class="hover:text-white transition-colors">GitHub</a>
-                <a href="#" class="hover:text-white transition-colors">Discord</a>
+                <div class="flex space-x-8">
+                    <a href="#" class="hover:text-white transition-colors duration-200">Twitter</a>
+                    <a href="#" class="hover:text-white transition-colors duration-200">GitHub</a>
+                    <a href="#" class="hover:text-white transition-colors duration-200">Discord</a>
+                </div>
             </div>
         </div>
     </footer>

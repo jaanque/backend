@@ -1,14 +1,25 @@
-import { Component, ElementRef, ViewChild, AfterViewInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { DragDropModule, CdkDragEnd, CdkDragMove } from '@angular/cdk/drag-drop';
+import { DragDropModule, CdkDragMove } from '@angular/cdk/drag-drop';
+
+interface Field {
+  name: string;
+  type: string;
+  isPk?: boolean;
+  isFk?: boolean;
+  description: string;
+}
 
 interface TableNode {
   id: string;
   name: string;
   x: number;
   y: number;
+  initialX: number;
+  initialY: number;
   width: number;
-  height: number; // approximate for connection calculation
+  height: number;
+  fields: Field[];
 }
 
 @Component({
@@ -20,10 +31,43 @@ interface TableNode {
 })
 export class LandingComponent {
 
-  // Initial positions
+  selectedField: Field | null = null;
+  selectedTable: string | null = null;
+
+  // Initial positions and data
   nodes: TableNode[] = [
-    { id: 'users', name: 'public.users', x: 40, y: 40, width: 224, height: 180 }, // w-56 = 224px
-    { id: 'posts', name: 'public.posts', x: 320, y: 160, width: 224, height: 180 }
+    {
+      id: 'users',
+      name: 'public.users',
+      x: 40,
+      y: 40,
+      initialX: 40,
+      initialY: 40,
+      width: 224,
+      height: 180,
+      fields: [
+        { name: 'id', type: 'uuid', isPk: true, description: 'Unique identifier for the user. Automatically generated.' },
+        { name: 'email', type: 'varchar', description: 'User email address. Must be unique.' },
+        { name: 'full_name', type: 'text', description: 'Full name of the user as displayed in profile.' },
+        { name: 'created_at', type: 'timestamptz', description: 'Timestamp when the user account was created.' }
+      ]
+    },
+    {
+      id: 'posts',
+      name: 'public.posts',
+      x: 320,
+      y: 160,
+      initialX: 320,
+      initialY: 160,
+      width: 224,
+      height: 180,
+      fields: [
+        { name: 'id', type: 'uuid', isPk: true, description: 'Unique identifier for the post.' },
+        { name: 'user_id', type: 'uuid', isFk: true, description: 'Foreign key referencing public.users(id).' },
+        { name: 'title', type: 'text', description: 'Title of the post.' },
+        { name: 'content', type: 'text', description: 'Main content body of the post.' }
+      ]
+    }
   ];
 
   connectionPath: string = '';
@@ -32,37 +76,26 @@ export class LandingComponent {
     this.updateConnection();
   }
 
+  selectField(table: string, field: Field) {
+    this.selectedTable = table;
+    this.selectedField = field;
+  }
+
+  closeSidebar() {
+    this.selectedField = null;
+    this.selectedTable = null;
+  }
+
   // Handle drag move to update lines in real-time
   onDragMoved(event: CdkDragMove, nodeIndex: number) {
-    const element = event.source.element.nativeElement;
-    const transform = element.style.transform;
-    const regex = /translate3d\(([^p]+)px,\s*([^p]+)px/;
-    const match = transform.match(regex);
-
-    // CDK Drag uses translate3d, we need to add that to the initial position to get current visual position
-    // However, the cleanest way with Angular CDK to get position relative to container is checking `getFreeDragPosition` if we used that,
-    // or just using the event pointer position diff.
-
-    // Easier approach: Use the `cdkDragFreeDragPosition` input binding if we wanted 2-way binding,
-    // but here we let DOM handle it and just calculate based on the element's bounding rect relative to the container?
-    // No, that's heavy.
-
-    // Let's rely on the pointer position for smooth updates or simply update the stored coordinates
-    // CdkDragMove gives us the pointer position.
-
     const dragPos = event.source.getFreeDragPosition();
-    this.nodes[nodeIndex].x = this.getInitialX(nodeIndex) + dragPos.x;
-    this.nodes[nodeIndex].y = this.getInitialY(nodeIndex) + dragPos.y;
+    const node = this.nodes[nodeIndex];
+    // Update the current coordinates for drawing the lines
+    // based on initial position + drag delta
+    node.x = node.initialX + dragPos.x;
+    node.y = node.initialY + dragPos.y;
 
     this.updateConnection();
-  }
-
-  getInitialX(index: number): number {
-      return index === 0 ? 40 : 320;
-  }
-
-  getInitialY(index: number): number {
-      return index === 0 ? 40 : 160;
   }
 
   updateConnection() {
@@ -70,13 +103,13 @@ export class LandingComponent {
     const posts = this.nodes[1];
 
     // Connect from right side of Users to left side of Posts
-    // Users (source)
+    // Users (source) - id field is first row (approx 45px down from top)
     const startX = users.x + users.width;
-    const startY = users.y + 55; // Approx height of ID field row
+    const startY = users.y + 55;
 
-    // Posts (target)
+    // Posts (target) - user_id field is second row (approx 85px down from top)
     const endX = posts.x;
-    const endY = posts.y + 90; // Approx height of user_id field row
+    const endY = posts.y + 90;
 
     // Bezier curve
     const controlPointOffset = Math.abs(endX - startX) * 0.5;
