@@ -47,17 +47,17 @@
         </button>
       </div>
 
-      <!-- Visual Representation (Mockup) -->
-      <div class="mt-20 relative rounded border border-gray-800 bg-[#121212] shadow-xl overflow-hidden">
+      <!-- Visual Representation (Interactive Mockup) -->
+      <div class="mt-20 relative rounded border border-gray-800 bg-[#121212] shadow-xl overflow-hidden cursor-default select-none">
           <div class="p-3 border-b border-gray-800 flex items-center space-x-2 bg-[#1a1a1a]">
               <div class="w-3 h-3 rounded-full bg-gray-600"></div>
               <div class="w-3 h-3 rounded-full bg-gray-600"></div>
               <div class="w-3 h-3 rounded-full bg-gray-600"></div>
-              <div class="ml-4 text-xs text-gray-500 font-mono">schema-editor.tsx</div>
+              <div class="ml-4 text-xs text-gray-500 font-mono">Mi Base de Datos</div>
           </div>
-          <div class="p-8 grid grid-cols-12 gap-0 text-left h-[450px] overflow-hidden relative bg-[#0F0F0F]">
+          <div class="p-0 grid grid-cols-12 gap-0 text-left h-[500px] overflow-hidden relative bg-[#0F0F0F]">
                 <!-- Sidebar -->
-                <div class="col-span-2 border-r border-gray-800 pr-4 space-y-3 pt-2">
+                <div class="col-span-2 border-r border-gray-800 pr-4 space-y-3 pt-6 pl-6">
                   <div class="h-2 w-16 bg-gray-800 rounded"></div>
                   <div class="h-2 w-24 bg-gray-800/50 rounded"></div>
                   <div class="h-2 w-20 bg-gray-800/50 rounded"></div>
@@ -69,35 +69,41 @@
                 </div>
                 <!-- Canvas -->
                 <div class="col-span-10 relative bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMSIgY3k9IjEiIHI9IjEiIGZpbGw9IiMzMzMiLz48L3N2Zz4=')]">
-                  <!-- Table Node 1 -->
-                  <div class="absolute top-10 left-10 w-56 bg-[#1a1a1a] rounded border border-gray-700 shadow-sm">
-                      <div class="flex justify-between items-center px-3 py-2 border-b border-gray-700 bg-[#222]">
-                          <span class="font-semibold text-gray-200 text-xs">public.users</span>
+
+                  <!-- Table Node 1: Users -->
+                  <div cdkDrag (cdkDragMoved)="onDragMoved($event, 0)"
+                       class="absolute w-56 bg-[#1a1a1a] rounded border border-gray-700 shadow-lg cursor-move hover:border-gray-500 transition-colors z-20"
+                       [style.transform]="'translate3d(' + nodes[0].x + 'px, ' + nodes[0].y + 'px, 0)'">
+
+                      <!-- Drag Handle -->
+                      <div class="flex justify-between items-center px-3 py-2 border-b border-gray-700 bg-[#222] rounded-t" cdkDragHandle>
+                          <span class="font-semibold text-gray-200 text-xs">{{ nodes[0].name }}</span>
                           <svg class="w-3 h-3 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"/></svg>
                       </div>
+
                       <div class="p-2 space-y-2">
-                          <div class="flex justify-between items-center text-xs group hover:bg-gray-800/50 p-1 rounded cursor-pointer">
+                          <div class="flex justify-between items-center text-xs group hover:bg-gray-800/50 p-1 rounded">
                             <div class="flex items-center space-x-2">
                               <span class="text-yellow-600 font-mono">PK</span>
                               <span class="text-gray-300">id</span>
                             </div>
                             <span class="text-gray-500 font-mono">uuid</span>
                           </div>
-                          <div class="flex justify-between items-center text-xs group hover:bg-gray-800/50 p-1 rounded cursor-pointer">
+                          <div class="flex justify-between items-center text-xs group hover:bg-gray-800/50 p-1 rounded">
                             <div class="flex items-center space-x-2">
                               <span class="w-4"></span>
                               <span class="text-gray-300">email</span>
                             </div>
                             <span class="text-gray-500 font-mono">varchar</span>
                           </div>
-                          <div class="flex justify-between items-center text-xs group hover:bg-gray-800/50 p-1 rounded cursor-pointer">
+                          <div class="flex justify-between items-center text-xs group hover:bg-gray-800/50 p-1 rounded">
                             <div class="flex items-center space-x-2">
                               <span class="w-4"></span>
                               <span class="text-gray-300">full_name</span>
                             </div>
                             <span class="text-gray-500 font-mono">text</span>
                           </div>
-                           <div class="flex justify-between items-center text-xs group hover:bg-gray-800/50 p-1 rounded cursor-pointer">
+                           <div class="flex justify-between items-center text-xs group hover:bg-gray-800/50 p-1 rounded">
                             <div class="flex items-center space-x-2">
                               <span class="w-4"></span>
                               <span class="text-gray-300">created_at</span>
@@ -107,35 +113,40 @@
                       </div>
                   </div>
 
-                  <!-- Table Node 2 -->
-                  <div class="absolute top-40 left-80 w-56 bg-[#1a1a1a] rounded border border-gray-700 shadow-sm">
-                      <div class="flex justify-between items-center px-3 py-2 border-b border-gray-700 bg-[#222]">
-                          <span class="font-semibold text-gray-200 text-xs">public.posts</span>
+                  <!-- Table Node 2: Posts -->
+                  <div cdkDrag (cdkDragMoved)="onDragMoved($event, 1)"
+                       class="absolute w-56 bg-[#1a1a1a] rounded border border-gray-700 shadow-lg cursor-move hover:border-gray-500 transition-colors z-20"
+                       [style.transform]="'translate3d(' + nodes[1].x + 'px, ' + nodes[1].y + 'px, 0)'">
+
+                      <!-- Drag Handle -->
+                      <div class="flex justify-between items-center px-3 py-2 border-b border-gray-700 bg-[#222] rounded-t" cdkDragHandle>
+                          <span class="font-semibold text-gray-200 text-xs">{{ nodes[1].name }}</span>
                           <svg class="w-3 h-3 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"/></svg>
                       </div>
+
                       <div class="p-2 space-y-2">
-                          <div class="flex justify-between items-center text-xs group hover:bg-gray-800/50 p-1 rounded cursor-pointer">
+                          <div class="flex justify-between items-center text-xs group hover:bg-gray-800/50 p-1 rounded">
                             <div class="flex items-center space-x-2">
                               <span class="text-yellow-600 font-mono">PK</span>
                               <span class="text-gray-300">id</span>
                             </div>
                             <span class="text-gray-500 font-mono">uuid</span>
                           </div>
-                          <div class="flex justify-between items-center text-xs group hover:bg-gray-800/50 p-1 rounded cursor-pointer">
+                          <div class="flex justify-between items-center text-xs group hover:bg-gray-800/50 p-1 rounded">
                             <div class="flex items-center space-x-2">
                               <span class="text-blue-500 font-mono">FK</span>
                               <span class="text-gray-300">user_id</span>
                             </div>
                             <span class="text-gray-500 font-mono">uuid</span>
                           </div>
-                          <div class="flex justify-between items-center text-xs group hover:bg-gray-800/50 p-1 rounded cursor-pointer">
+                          <div class="flex justify-between items-center text-xs group hover:bg-gray-800/50 p-1 rounded">
                             <div class="flex items-center space-x-2">
                               <span class="w-4"></span>
                               <span class="text-gray-300">title</span>
                             </div>
                             <span class="text-gray-500 font-mono">text</span>
                           </div>
-                           <div class="flex justify-between items-center text-xs group hover:bg-gray-800/50 p-1 rounded cursor-pointer">
+                           <div class="flex justify-between items-center text-xs group hover:bg-gray-800/50 p-1 rounded">
                             <div class="flex items-center space-x-2">
                               <span class="w-4"></span>
                               <span class="text-gray-300">content</span>
@@ -146,10 +157,10 @@
                   </div>
 
                   <!-- Connection Line -->
-                  <svg class="absolute inset-0 pointer-events-none w-full h-full">
-                        <path d="M 276 95 C 380 95, 260 220, 320 220" stroke="#444" stroke-width="1.5" fill="none" />
-                        <circle cx="276" cy="95" r="3" fill="#666" />
-                        <circle cx="320" cy="220" r="3" fill="#666" />
+                  <svg class="absolute inset-0 pointer-events-none w-full h-full z-10">
+                        <path [attr.d]="connectionPath" stroke="#444" stroke-width="2" fill="none" />
+                        <!-- Start Point Dot (Users ID) -->
+                         <!-- Coordinates match the path start, manually adjusting just for visual confirmation if needed, but path handles it -->
                   </svg>
 
                 </div>
